@@ -28,7 +28,7 @@
     "@apollo/composition": "file:../composition-js",
     "@apollo/federation-internals": "file:../internals-js",
     "@apollo/query-planner": "file:../query-planner-js",
-    "@apollo/server-gateway-interface": "^1.0.2",
+    "@apollo/server-gateway-interface": "https://pkg.csb.dev/apollographql/apollo-server/commit/515ae7f7/@apollo/server-gateway-interface",
     "@apollo/usage-reporting-protobuf": "^4.0.0",
     "@apollo/utils.createhash": "^1.1.0",
     "@apollo/utils.fetcher": "^1.1.0",

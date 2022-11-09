@@ -432,6 +432,13 @@ async function executeFetch(
         downstreamServiceError(error, fetch.serviceName),
       );
       context.errors.push(...errors);
+
+      if (!response.extensions?.ftv1) {
+        context.requestContext.metrics.nonFtv1Errors = [
+            ...(context.requestContext.metrics.nonFtv1Errors ?? []),
+            ...errors,
+        ]
+      }
     }
 
     // If we're capturing a trace for Studio, save the received trace into the
@@ -477,6 +484,10 @@ async function executeFetch(
           });
         }
         traceNode.traceParsingFailed = traceParsingFailed;
+      }
+
+      if (response.errors && !response.extensions?.ftv1) {
+        context.requestContext.metrics;
       }
     }
 
