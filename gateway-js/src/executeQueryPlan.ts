@@ -435,7 +435,7 @@ async function executeFetch(
 
       if (!response.extensions?.ftv1) {
         context.requestContext.metrics.nonFtv1Errors = [
-            ...(context.requestContext.metrics.nonFtv1Errors ?? []),
+            ...(context.requestContext.metrics?.nonFtv1Errors ?? []),
             ...errors,
         ]
       }
