@@ -434,13 +434,11 @@ async function executeFetch(
       context.errors.push(...errors);
 
       if (!response.extensions?.ftv1) {
-        context.requestContext.metrics.nonFtv1Errors = [
-          ...(context.requestContext.metrics.nonFtv1Errors ?? []),
-          ...response.errors.map(
-            ({ message, extensions, path }) =>
-              new GraphQLError(message, { extensions, path }),
-          ),
-        ];
+        if (context.requestContext.metrics.nonFtv1Errors) {
+          context.requestContext.metrics.nonFtv1Errors.push(...errors);
+        } else {
+          context.requestContext.metrics.nonFtv1Errors = errors;
+        }
       }
     }
 
@@ -487,10 +485,6 @@ async function executeFetch(
           });
         }
         traceNode.traceParsingFailed = traceParsingFailed;
-      }
-
-      if (response.errors && !response.extensions?.ftv1) {
-        context.requestContext.metrics;
       }
     }
 
