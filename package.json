@@ -28,7 +28,7 @@
   },
   "engines": {
     "node": ">=14.15.0",
-    "npm": ">=7 <9"
+    "npm": "<10"
   },
   "dependencies": {
     "@apollo/composition": "file:composition-js",
@@ -96,6 +96,6 @@
   },
   "volta": {
     "node": "16.17.0",
-    "npm": "8.18.0"
+    "npm": "9.2.0"
   }
 }
